@@ -1,7 +1,8 @@
 # snowflake
-雪花特效 利用canvas
-可以克隆下来直接使用
-使用方法如下
+###雪花特效 利用canvas
+###可以克隆下来直接使用
+###使用方法如下
+```
 <script src="./src/snowFlake.es5.js"></script>
 <script>
   var canvas = document.getElementById('snowItem')
@@ -25,6 +26,8 @@
   })
   flowers.start()
 </script>
+```
 snowFlake拥有两个方法，start()开启 stop()关闭
-es6的可以直接import snowFlake from './src/snowFlake.es5.js'
+es6的可以直接
+```import snowFlake from './src/snowFlake.es5.js'```
 使用方法不变
