@@ -1,9 +1,10 @@
 var snowFlake = function (event, options) {
+  var self = this
   var snowFlakes = [] // 雪花數組
   var snowflake
   var ctx = event.getContext('2d')
-  var width = event.parentNode.clientWidth
-  var height = event.parentNode.clientHeight
+  var width = Math.abs(parseInt(options.width)) || event.parentNode.clientWidth
+  var height = Math.abs(parseInt(options.height)) || event.parentNode.clientHeight
   var open = true // 控制是否开启
   event.width = width
   event.height = height
@@ -13,7 +14,6 @@ var snowFlake = function (event, options) {
   var rs = Math.abs(parseFloat(options.rs)) || 1 // 雪花大小的半径
   var ds = Math.abs(parseFloat(options.ds)) || 0 // 雪花最大半径与最小半径的差
   var vy = Math.abs(parseFloat(options.vy)) || 1 // 雪花y軸下降速度
-  var vx = Math.abs(parseFloat(options.vx)) || 0 // 雪花x軸偏移速度
   var dy = Math.abs(parseFloat(options.dy)) || 0 // 雪花y軸平均速度偏移量，即最大下落速度和最小下落速度之差除以2
   var dx = Math.abs(parseFloat(options.dx)) || 0 // 雪花x軸速度偏移量，即向左偏移速度和向右偏移速度绝对值之和
   var isShadow = options.isShadow || false // 是否显示雪花阴影
@@ -93,6 +93,15 @@ var snowFlake = function (event, options) {
   this.stop = function () {
     open = false
   }
+
+  
+  window.addEventListener('resize', function () {
+    width = Math.abs(parseInt(options.width)) || event.parentNode.clientWidth
+    height = Math.abs(parseInt(options.height)) || event.parentNode.clientHeight
+    event.width = width
+    event.height = height
+    viewResize()
+  }, {passive: false})
 }
 
 try {

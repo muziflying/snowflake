@@ -1,8 +1,8 @@
 class snowFlake {
   constructor (event, options) {
     this.ctx = event.getContext('2d')
-    this.width = event.parentNode.clientWidth
-    this.height = event.parentNode.clientHeight
+    this.width = Math.abs(parseInt(options.width)) || event.parentNode.clientWidth
+    this.height = Math.abs(parseInt(options.height)) || event.parentNode.clientHeight
     this.snowFlakes = [] // 雪花數組
     this.open = true // 控制是否开启
     event.width = this.width
@@ -13,12 +13,19 @@ class snowFlake {
     this.rs = Math.abs(parseFloat(options.rs)) || 1 // 雪花大小的半径
     this.ds = Math.abs(parseFloat(options.ds)) || 0 // 雪花最大半径与最小半径的差
     this.vy = Math.abs(parseFloat(options.vy)) || 1 // 雪花y軸下降速度
-    this.vx = Math.abs(parseFloat(options.vx)) || 0 // 雪花x軸偏移速度
     this.dy = Math.abs(parseFloat(options.dy)) || 0 // 雪花y軸平均速度偏移量，即最大下落速度和最小下落速度之差除以2
     this.dx = Math.abs(parseFloat(options.dx)) || 0 // 雪花x軸速度偏移量，即向左偏移速度和向右偏移速度绝对值之和
     this.isShadow = options.isShadow || false // 是否显示雪花阴影
     this.shadow = options.shadow || {} // 当isShadow为true时启用 参数为canvas的阴影属性
     this.isOpa = options.isOpa || true // 是否启用透明 （透明选项为随机透明 透明度0.5 - 1）
+
+    window.addEventListener('resize', () => {
+      this.width = Math.abs(parseInt(options.width)) || event.parentNode.clientWidth
+      this.height = Math.abs(parseInt(options.height)) || event.parentNode.clientHeight
+      event.width = this.width
+      event.height = this.height
+      this.this.viewResize()
+    }, {passive: false})
   }
 
   start () {

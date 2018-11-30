@@ -23,6 +23,8 @@
 <script>
   var canvas = document.getElementById('snowItem')
   var flowers = new snowFlake(canvas, {
+    width: null, // canvas的宽度 单位px  若为空  则取其父元素宽度
+    height: null, //  canvas的高度 单位px  若为空  则取其父元素高度
     isShadow: true, // 是否显示雪花阴影
     shadow: { // 当isShadow为true时启用 参数为canvas的阴影属性
       shadowOffsetX: 0,
@@ -31,12 +33,11 @@
       shadowColor: 'white'
     },
     color: 'white', // 雪花顏色
-    number: 25, // 雪花數量
-    rs: 3, // 雪花大小的半径
+    number: 125, // 雪花數量
+    rs: 2, // 雪花大小的半径
     ds: 2, // 雪花最大半径与最小半径的差
     isOpa: true, // 是否启用透明 （透明选项为随机透明 透明度0.5 - 1）
-    vy: 5, // 雪花y軸下降速度
-    vx: 1, // 雪花x軸偏移速度
+    vy: 2, // 雪花y軸下降速度
     dy: 1, // 雪花y軸平均速度偏移量，即最大下落速度和最小下落速度之差除以2
     dx: 1 // 雪花x軸速度偏移量，即向左偏移速度和向右偏移速度绝对值之和
   })

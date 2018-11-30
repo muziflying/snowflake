@@ -9,7 +9,7 @@ gulp.task('babel', function() {
 })
 
 gulp.task('min', function () {
-  return gulp.src('src/snowFlake.es6.js')
+  return gulp.src('src/snowFlake.es5.js')
     .pipe(uglify())
     .pipe(gulp.dest('lib/min'))
 })
