@@ -1,5 +1,6 @@
 # snowflake
 ### 雪花特效 利用canvas
+[Demo](https://muziflying.github.io/snowflake/)
 ### 可以克隆下来直接使用
 ### 使用方法如下
 ```
