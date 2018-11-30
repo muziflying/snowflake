@@ -31,4 +31,4 @@
 ### snowFlake拥有两个方法，start()开启 stop()关闭
 ### es6的可以直接
 ```import snowFlake from './src/snowFlake.es5.js'```
-###使用参数不变
+### 使用参数不变
